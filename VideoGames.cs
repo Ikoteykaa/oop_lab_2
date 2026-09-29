@@ -6,7 +6,7 @@ namespace oop_lab_1
     {
  
         private string _name;
-        private GameGgenre _genre;
+        private GameGenre _genre;
         private double _rating;
         private DateOnly _releaseYear;
         private double _price;
@@ -29,12 +29,12 @@ namespace oop_lab_1
             }
         }
 
-        public GameGgenre Genre
+        public GameGenre Genre
         {
             get { return _genre; }
             set
             {
-                if (!Enum.IsDefined(typeof(GameGgenre), value))
+                if (!Enum.IsDefined(typeof(GameGenre), value))
                     throw new ArgumentException("Недопустимий жанр гри.");
                 _genre = value;
             }
@@ -76,16 +76,16 @@ namespace oop_lab_1
  
         public bool IsTopTier => Rating >= 4.5 && CountPlayers > 0;
 
-        public VideoGames(string name, GameGgenre genre, double rating, DateOnly release_year, double price)
-        {
+        //public VideoGames(string name, GameGgenre genre, double rating, DateOnly release_year, double price)
+        //{
 
-            Name = name;
-            Genre = genre;
-            Rating = rating;
-            ReleaseYear = release_year;
-            Price = price;
-            CountPlayers = 0;
-        }
+        //    Name = name;
+        //    Genre = genre;
+        //    Rating = rating;
+        //    ReleaseYear = release_year;
+        //    Price = price;
+        //    CountPlayers = 0;
+        //}
 
  
         private void ChangePlayerCount(int delta)

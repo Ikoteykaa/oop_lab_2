@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace oop_lab_1
 {
-    internal enum GameGgenre
+    internal enum GameGenre
     {
         Action = 1,
         Adventure,

@@ -89,28 +89,30 @@ namespace oop_lab_1
         static VideoGames AddGame()
         {
             Console.WriteLine("\n Додавання нової гри");
-            VideoGames newGame = null;
+            VideoGames newGame = new VideoGames();
+            bool isValid = false;
 
-            while (newGame == null)
+            while (!isValid)
             {
+              
                 try
                 {
                     Console.Write("Введіть назву гри (2-50 символів): ");
                     string name = Console.ReadLine();
-
+                    newGame.Name = name;
                     Console.Write("Оберіть жанр гри (1-Action, 2-Adventure, 3-RPG, 4-Strategy, 5-Sport, 6-Horror, 7-Simulator): ");
-                    GameGgenre genre = (GameGgenre)int.Parse(Console.ReadLine());
-
+                    GameGenre genre = (GameGenre)int.Parse(Console.ReadLine());
+                    newGame.Genre = genre;
                     Console.Write("Введіть рейтинг гри (від 0 до 5, напр. 4,5): ");
                     double rating = double.Parse(Console.ReadLine());
-
+                    newGame.Rating = rating;
                     Console.Write("Введіть дату релізу (рррр-мм-дд): ");
                     DateOnly releaseYear = DateOnly.Parse(Console.ReadLine());
-
+                    newGame.ReleaseYear = releaseYear;  
                     Console.Write("Введіть ціну гри (більше 0): ");
                     double price = double.Parse(Console.ReadLine());
-
-                    newGame = new VideoGames(name, genre, rating, releaseYear, price);
+                    newGame.Price = price;  
+                    isValid = true;
                 }
                 catch (ArgumentOutOfRangeException ex)
                 {
@@ -180,7 +182,7 @@ namespace oop_lab_1
                 Console.WriteLine("Оберіть жанр (1-Action, 2-Adventure, 3-RPG, 4-Strategy, 5-Sport, 6-Horror, 7-Simulator): ");
                 if (int.TryParse(Console.ReadLine(), out int gChoice) && gChoice >= 1 && gChoice <= 7)
                 {
-                    GameGgenre searchGenre = (GameGgenre)gChoice;
+                    GameGenre searchGenre = (GameGenre)gChoice;
                     Console.WriteLine("\nРезультати пошуку:");
                     PrintHeader();
                     for (int i = 0; i < count; i++)
@@ -326,7 +328,7 @@ namespace oop_lab_1
                 Console.WriteLine("Оберіть жанр (1-Action, 2-Adventure, 3-RPG, 4-Strategy, 5-Sport, 6-Horror, 7-Simulator): ");
                 if (int.TryParse(Console.ReadLine(), out int gChoice) && gChoice >= 1 && gChoice <= 7)
                 {
-                    GameGgenre delGenre = (GameGgenre)gChoice;
+                    GameGenre delGenre = (GameGenre)gChoice;
                     int initialCount = count;
 
                     for (int i = count - 1; i >= 0; i--)
